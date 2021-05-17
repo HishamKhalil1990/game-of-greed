@@ -69,8 +69,8 @@ class Banker():
         self.shelved = 0
         self.balance = 0
 
-    def shelf(self,calculated_score:int):
-        self.shelved = calculated_score
+    def shelf(self,claculated_score:int):
+        self.shelved = claculated_score
 
     def bank(self):
         self.balance += self.shelved
@@ -82,3 +82,63 @@ class Banker():
     def __str__(self):
         pass
 
+
+class Game:
+    def __init__(self,roll_test=None) :
+        self.test_input = roll_test
+        
+
+    def play (self):
+        counter = 1
+        dic_num = 6
+        total_score = 0
+        shelf_score = 0
+        not_quit = True
+        print('Welcome to Game of Greed')
+        user_input = input('Wanna play?')
+        if user_input.lower() == 'n' :
+            print('OK. Maybe another time')
+        elif user_input.lower()=='y':
+           while(not_quit):
+                print(f"""Starting round {counter}
+Rolling {dic_num} dice...""")
+                obj = Game_logic()
+                separator = ','
+                array = [str(int) for int in obj.roll_dice(dic_num)]
+                print( separator.join(array))
+
+
+                # print(self.test_input)
+                val =  input('Enter dice to keep (no spaces), or (q)uit:')
+                if val.lower() == 'q' :
+                    not_quit = False
+                    print(f"""Total score is {total_score} points
+Thanks for playing. You earned {total_score} points""")    
+                else :
+                    input_dic = tuple(int(num) for num in val)
+                    shelf_score = obj.calculate_score(input_dic)
+                    dic_num -= len(input_dic)
+                    print(f"You have {shelf_score} unbanked points and {dic_num} dice remaining")
+                    user_choice = input('(r)oll again, (b)ank your points or (q)uit ')
+
+                    if user_choice.lower() == 'b' :
+                        total_score += shelf_score
+                        print(f"""You banked {shelf_score} points in round {counter}
+Total score is {total_score} points""")
+                        dic_num = 6
+                        shelf_score = 0
+                    elif user_choice.lower() == 'r':
+                        pass
+                    elif user_choice.lower() == 'q':
+                        not_quit =  False
+                        print(f"""Total score is {total_score} points
+Thanks for playing. You earned {total_score} points""")  
+                    else :
+                        print('')
+                    counter += 1
+        else:
+            print('')
+
+
+# obj = Game()
+# obj.play()
