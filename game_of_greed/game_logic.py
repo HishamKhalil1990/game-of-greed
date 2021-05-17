@@ -2,6 +2,7 @@ from builtins import tuple
 from abc import ABC
 from collections import Counter 
 import random
+from typing import Container
 
 class Game_logic():
     def __init__(self):
@@ -84,7 +85,7 @@ class Banker():
 
 
 class Game:
-    def __init__(self,roll_test=None) :
+    def __init__(self,roll_test) :
         self.test_input = roll_test
         
 
@@ -106,8 +107,7 @@ Rolling {dic_num} dice...""")
                 separator = ','
                 array = [str(int) for int in obj.roll_dice(dic_num)]
                 print( separator.join(array))
-
-
+            
                 # print(self.test_input)
                 val =  input('Enter dice to keep (no spaces), or (q)uit:')
                 if val.lower() == 'q' :
