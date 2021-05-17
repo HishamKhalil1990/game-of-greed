@@ -2,7 +2,6 @@ from builtins import tuple
 from abc import ABC
 from collections import Counter 
 import random
-from typing import Container
 
 class Game_logic():
     def __init__(self):
@@ -85,9 +84,10 @@ class Banker():
 
 
 class Game:
-    def __init__(self,roll_test) :
-        self.test_input = roll_test
-        
+
+    def __init__(self,roll_test=None) :
+        self.obj = Game_logic()
+        self.test_input = roll_test or self.obj.roll_dice
 
     def play (self):
         counter = 1
@@ -103,20 +103,17 @@ class Game:
            while(not_quit):
                 print(f"""Starting round {counter}
 Rolling {dic_num} dice...""")
-                obj = Game_logic()
                 separator = ','
-                array = [str(int) for int in obj.roll_dice(dic_num)]
+                array = [str(int) for int in self.test_input(dic_num)]
                 print( separator.join(array))
-            
-                # print(self.test_input)
-                val =  input('Enter dice to keep (no spaces), or (q)uit:')
+                val =  input('Enter dice to keep (no spaces), or (q)uit: ')
                 if val.lower() == 'q' :
                     not_quit = False
                     print(f"""Total score is {total_score} points
 Thanks for playing. You earned {total_score} points""")    
                 else :
                     input_dic = tuple(int(num) for num in val)
-                    shelf_score = obj.calculate_score(input_dic)
+                    shelf_score = self.obj.calculate_score(input_dic)
                     dic_num -= len(input_dic)
                     print(f"You have {shelf_score} unbanked points and {dic_num} dice remaining")
                     user_choice = input('(r)oll again, (b)ank your points or (q)uit ')
@@ -138,7 +135,3 @@ Thanks for playing. You earned {total_score} points""")
                     counter += 1
         else:
             print('')
-
-
-# obj = Game()
-# obj.play()
