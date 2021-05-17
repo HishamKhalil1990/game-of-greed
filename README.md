@@ -1,8 +1,10 @@
-## Team Names :
+# Team Names :
 - Hisham Khalil
 - Hamzh Suilik
 - Noura Alquran
 - Mahmoud Alzoubi
+
+## lab06 
 
 Start Time : 12:00
 Finish Time : 3:30
@@ -17,6 +19,13 @@ In Game of Greed :
 - [x] we created "bank" feature to store accumulated score permenantly 
 - [x] we tested all featurs and they passed
 
+## lab07
+
+Start Time :
+Finish Time :
+
+Task :
+In Game of Greed :
 
 
 

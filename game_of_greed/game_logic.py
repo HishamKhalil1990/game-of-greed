@@ -68,19 +68,16 @@ class Banker():
     def __init__(self):
         self.shelved = 0
         self.balance = 0
-        pass
 
     def shelf(self,claculated_score:int):
         self.shelved = claculated_score
-        pass
 
     def bank(self):
         self.balance += self.shelved
         self.shelved = 0
-        pass
 
     def clear_shelf(self):
-        pass
+        self.shelved = 0
 
     def __str__(self):
         pass
