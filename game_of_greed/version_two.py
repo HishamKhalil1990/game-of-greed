@@ -95,18 +95,17 @@ class Game:
         total_score = 0
         shelf_score = 0
         not_quit = True
-        print("""Welcome to Game of Greed
-(y)es to play or (n)o to decline""")
-        user_input = input('>')
+        print('Welcome to Game of Greed')
+        user_input = input('Wanna play?')
         if user_input.lower() == 'n' :
             print('OK. Maybe another time')
         elif user_input.lower()=='y':
            while(not_quit):
                 print(f"""Starting round {counter}
 Rolling {dic_num} dice...""")
-                separator = ' '
+                separator = ','
                 array = [str(int) for int in self.test_input(dic_num)]
-                print("*** " + separator.join(array) +" ***")
+                print( separator.join(array))
                 val =  input('Enter dice to keep (no spaces), or (q)uit: ')
                 if val.lower() == 'q' :
                     not_quit = False
@@ -136,6 +135,3 @@ Thanks for playing. You earned {total_score} points""")
                     counter += 1
         else:
             print('')
-
-obj=Game()
-obj.play()
