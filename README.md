@@ -38,3 +38,23 @@ In Game of Greed :
 
 
 PR link : https://github.com/HishamKhalil1990/game-of-greed/pull/5
+
+
+
+## lab08
+
+Start Time : 2:00
+Finish Time : 9:00
+
+Task :
+In Game of Greed :
+- [x] we check the implimentation of all features from previous versions.
+- [x] we create a method to handle setting aside scoring dice and continuing turn with remaining dice
+- [x] we created feature that allow user to continue rolling with 6 new dice when all dice have scored incurrent turn.
+- [x] we created feature in "Game" allows “banking” current score or rolling again.
+- [x] we created feature in "Game" keeps track of total score
+- [x] we created feature in "Game" keeps track of current round
+- [x] we created automated tests to ensure proper operation
+
+
+PR link : https://github.com/HishamKhalil1990/game-of-greed/pull/7
