@@ -60,23 +60,7 @@ class Game_logic():
     @staticmethod
     def roll_dice(num_dice:int):
         return tuple(random.randint(1,6) for num in range(0,num_dice))
-    
-    @staticmethod
-    def validate_keepers(roll, keepers):
-        counter_one = Counter(keepers)
-        output_one= counter_one.most_common()
-        counter_two = Counter(roll)
-        output_two = counter_two.most_common()
-        result=[]
-        for num_2 in output_two:
-            for num_1 in output_one:
-                if num_1[0] == num_2[0]:
-                    if num_1[1] <= num_2[1]:
-                        result.append(1)
-        if not len(result) == len(output_one):
-            return False
-        else :
-            return True
+
     def __str__(self):
         pass
 
@@ -111,54 +95,29 @@ class Game:
         total_score = 0
         shelf_score = 0
         not_quit = True
-        print("""Welcome to Game of Greed
-(y)es to play or (n)o to decline""")
-        user_input = input('> ')
+        print('Welcome to Game of Greed')
+        user_input = input('Wanna play?')
         if user_input.lower() == 'n' :
             print('OK. Maybe another time')
         elif user_input.lower()=='y':
            while(not_quit):
                 print(f"""Starting round {counter}
 Rolling {dic_num} dice...""")
-                separator = ' '
+                separator = ','
                 array = [str(int) for int in self.test_input(dic_num)]
-                check = False
-                while not check:
-                    print("*** " + separator.join(array) +" ***")
-                    val =  input("""Enter dice to keep, or (q)uit:
-> """)
-                    if val.lower() == 'q' :
-                        not_quit = False
-                        print(f"""Total score is {total_score} points
-Thanks for playing. You earned {total_score} points""")  
-                        break
-                    else :
-                        input_dic = tuple(str(num) for num in val if num != " ")
-                        check= Game_logic.validate_keepers(array , input_dic)
-                        # counter_one = Counter(input_dic)
-                        # output_one= counter_one.most_common()
-                        # counter_two = Counter(array)
-                        # output_two = counter_two.most_common()
-                        # result=[]
-                        # for num_2 in output_two:
-                        #     for num_1 in output_one:
-                        #         if num_1[0] == num_2[0]:
-                        #             if num_1[1] <= num_2[1]:
-                        #                 result.append(1)
-                        # print(result)
-                        # if not len(result) == len(output_one):
-                        #     check=False
-
-                        if not check :
-                           print("Cheater!!! Or possibly made a typo...")  
-                        
-
-                if not_quit :
-                    input_dic = tuple(int(num) for num in input_dic)
+                print( separator.join(array))
+                val =  input('Enter dice to keep (no spaces), or (q)uit: ')
+                if val.lower() == 'q' :
+                    not_quit = False
+                    print(f"""Total score is {total_score} points
+Thanks for playing. You earned {total_score} points""")    
+                else :
+                    input_dic = tuple(int(num) for num in val)
                     shelf_score = self.obj.calculate_score(input_dic)
                     dic_num -= len(input_dic)
                     print(f"You have {shelf_score} unbanked points and {dic_num} dice remaining")
                     user_choice = input('(r)oll again, (b)ank your points or (q)uit ')
+
                     if user_choice.lower() == 'b' :
                         total_score += shelf_score
                         print(f"""You banked {shelf_score} points in round {counter}
@@ -176,6 +135,3 @@ Thanks for playing. You earned {total_score} points""")
                     counter += 1
         else:
             print('')
-
-# obj=Game()
-# obj.play()
