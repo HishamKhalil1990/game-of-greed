@@ -58,3 +58,22 @@ In Game of Greed :
 
 
 PR link : https://github.com/HishamKhalil1990/game-of-greed/pull/7
+
+
+## lab09
+
+Start Time : 4:00
+Finish Time: 9:00
+
+# we uses our code
+
+Task : Build Bots stratigies 
+In Game of Greed:
+- [x] we check the implimentation of all features from previous versions.
+- [x] we arrange our code to be suitable with the bots instance.
+- [x] we build a our stratigies for the bots.
+- [x] we beat "NervousNellie" by "yourBots" stratigies.
+- [x] we updated a "get_score" method to maximize the points probabilities domain.
+
+PR Link : https://github.com/HishamKhalil1990/game-of-greed/pull/8
+
