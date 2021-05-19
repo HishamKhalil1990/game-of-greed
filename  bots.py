@@ -74,7 +74,7 @@ class BaseBot(ABC):
             return "y"
 
         elif self.last_print == "Enter dice to keep, or (q)uit:":
-            
+           
             return self._enter_dice()
             
 
@@ -135,8 +135,11 @@ class NervousNellie(BaseBot):
     """NervousNellie banks the first roll always"""
 
     def _roll_bank_or_quit(self):
-        self.total_score += self.unbanked_points
-        return "b"
+        if self.unbanked_points >= 150:
+            self.total_score += self.unbanked_points
+            return "b"
+        else:
+            return "r"
 
 class YourBot(BaseBot):
 

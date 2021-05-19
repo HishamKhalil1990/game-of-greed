@@ -125,21 +125,6 @@ class Game_logic():
                         output.append(dice[0])
         return output 
 
-    # @staticmethod
-    # def get_scorers(test_input):
-    #     count = Counter(test_input)
-    #     input = count.most_common()
-    #     output = []
-    #     for num in test_input:
-    #         for item in input:
-    #             if (num == 1 or num == 5) and num == item[0]:
-    #                 output.append(num)
-    #             elif num == item[0]:
-    #                 if item[1] >= 3:
-    #                     output.append(item[1])          
-    #     return tuple(output) 
-            
-
     def __str__(self):
         pass
 
