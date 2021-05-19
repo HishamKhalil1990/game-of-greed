@@ -1,5 +1,6 @@
 from game_of_greed.game_logic import *
 
+
 class Game:
 
     def __init__(self) :
@@ -14,9 +15,9 @@ class Game:
         shelf_score = 0
         not_quit = True
         not_skip = True
-        print("""Welcome to Game of Greed
-(y)es to play or (n)o to decline""")
-        user_input = input('> ')
+        print("Welcome to Game of Greed")
+        print("(y)es to play or (n)o to decline")
+        user_input = input("> ")
         if user_input.lower() == 'n' :
             print('OK. Maybe another time')
         elif user_input.lower()=='y':
@@ -29,8 +30,8 @@ class Game:
                 if Game_logic.calculate_score(tuple(int(string) for string in array)) != 0:
                     while not check:
                         print("*** " + separator.join(array) +" ***")
-                        val =  input("""Enter dice to keep, or (q)uit:
-> """)
+                        print("Enter dice to keep, or (q)uit:")
+                        val =  input("> ")
                         if val.lower() == 'q' :
                             not_quit = False
                             print(f"Thanks for playing. You earned {total_score} points")  
@@ -49,6 +50,7 @@ class Game:
                     user_choice = 'b' 
                     total_score = 0
                     shelf_score = 0
+                    exit()
                 if not_quit :
                     if not_skip:
                         input_dic = tuple(int(num) for num in input_dic)
@@ -60,8 +62,8 @@ class Game:
                     if user_choice.lower() == 'b' :
                         total_score += shelf_score
                         not_skip = True
-                        print(f"""You banked {shelf_score} points in round {counter}
-Total score is {total_score} points""")
+                        print(f"You banked {shelf_score} points in round {counter}")
+                        print(f"Total score is {total_score} points")
                         dic_num = 6
                         shelf_score = 0
                         counter += 1
@@ -74,7 +76,9 @@ Total score is {total_score} points""")
                     else :
                         print('')
                     if dic_num == 0:
-                        dic_num = 6    
+                        dic_num = 6 
+                if total_score >= 10000:
+                    exit()
                     
         else:
             print('')

@@ -80,17 +80,64 @@ class Game_logic():
 
     @staticmethod
     def get_scorers(test_input):
-        count = Counter(test_input)
-        input = count.most_common()
+        counter = Counter(test_input)
+        output = counter.most_common()
+        if len(output) == 6:
+            return test_input
+        elif len(output) == 3:
+            if output[0][1] == 2 and output[1][1] == 2 and output[2][1]==2:
+                return test_input
+            else:
+                return Game_logic.get_score_sub(output)
+        else:
+            return Game_logic.get_score_sub(output)
+
+    @staticmethod
+    def get_score_sub(test_input):
         output = []
-        for num in test_input:
-            for item in input:
-                if (num == 1 or num == 5) and num == item[0]:
-                    output.append(num)
-                elif num == item[0]:
-                    if item[1] >= 3:
-                        output.append(item[1])          
-        return tuple(output) 
+        for dice in test_input:
+            if dice[1] == 6:
+                for item in range(6):
+                    output.append(dice[0])
+                    
+            elif dice[1] == 5:
+                for item in range(5):
+                    output.append(dice[0])
+            elif dice[1] == 4:
+                for item in range(4):
+                    output.append(dice[0])
+            elif dice[1] == 3:
+                for item in range(3):
+                    output.append(dice[0])
+            elif dice[1] == 2:
+                if dice[0] == 1:
+                    for item in range(2):
+                        output.append(dice[0])
+                elif dice[0] == 5:
+                    for item in range(2):
+                        output.append(dice[0])
+            elif dice[1] == 1:
+                if dice[0] == 1:
+                    for item in range(1):
+                        output.append(dice[0])
+                elif dice[0] == 5:
+                    for item in range(1):
+                        output.append(dice[0])
+        return output 
+
+    # @staticmethod
+    # def get_scorers(test_input):
+    #     count = Counter(test_input)
+    #     input = count.most_common()
+    #     output = []
+    #     for num in test_input:
+    #         for item in input:
+    #             if (num == 1 or num == 5) and num == item[0]:
+    #                 output.append(num)
+    #             elif num == item[0]:
+    #                 if item[1] >= 3:
+    #                     output.append(item[1])          
+    #     return tuple(output) 
             
 
     def __str__(self):
