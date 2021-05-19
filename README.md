@@ -75,5 +75,6 @@ In Game of Greed:
 - [x] we beat "NervousNellie" by "yourBots" stratigies.
 - [x] we updated a "get_score" method to maximize the points probabilities domain.
 
-PR Link : https://github.com/HishamKhalil1990/game-of-greed/pull/8
+PR Link : https://github.com/HishamKhalil1990/game-of-greed/pull/9
+
 

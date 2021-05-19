@@ -32,9 +32,9 @@ class Game:
                         print("*** " + separator.join(array) +" ***")
                         print("Enter dice to keep, or (q)uit:")
                         val =  input("> ")
-                        if val.lower() == 'q' :
+                        if val.lower() == 'q':
                             not_quit = False
-                            print(f"Thanks for playing. You earned {total_score} points")  
+                            print(f"Thanks for playing. You earned {total_score} points")
                             break
                         else :
                             input_dic = tuple(str(num) for num in val if num != " ")
@@ -54,7 +54,7 @@ class Game:
                 if not_quit :
                     if not_skip:
                         input_dic = tuple(int(num) for num in input_dic)
-                        shelf_score = Game_logic.calculate_score(input_dic)
+                        shelf_score += Game_logic.calculate_score(input_dic)
                         dic_num -= len(input_dic)
                         print(f"You have {shelf_score} unbanked points and {dic_num} dice remaining")
                         print("(r)oll again, (b)ank your points or (q)uit:")

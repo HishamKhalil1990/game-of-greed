@@ -135,24 +135,34 @@ class NervousNellie(BaseBot):
     """NervousNellie banks the first roll always"""
 
     def _roll_bank_or_quit(self):
-        if self.unbanked_points >= 150:
-            self.total_score += self.unbanked_points
-            return "b"
-        else:
-            return "r"
+
+        self.total_score += self.unbanked_points
+        return "b"
+      
 
 class YourBot(BaseBot):
 
     def _roll_bank_or_quit(self):
         """your logic here"""
-        self.total_score += self.unbanked_points
-        return "b"
+        if self.unbanked_points < 50 :
+            return "r"
+        else:
+            self.total_score += self.unbanked_points
+            return "b"
 
+       
     def _enter_dice(self):
         """simulate user entering which dice to keep.
         Defaults to all scoring dice"""
-
         return super()._enter_dice()
+        # y = [int(num) for num in x if num.isdigit()]
+        # score = Game_logic.calculate_score(tuple(y))
+        # self.real_print(x)
+        # self.real_print(self.dice_remaining)
+        # if score == 50 and self.dice_remaining == 0:
+        #     return " "
+        # else:
+        #     return x
 
 
 if __name__ == "__main__":
